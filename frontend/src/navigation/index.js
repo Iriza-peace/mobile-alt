@@ -4,6 +4,8 @@ import Register from "../screens/auth/register";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Login from "../screens/auth/login";
 import Home from "../screens/app/home";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Navigator() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,21 +33,48 @@ export function AuthNavigation() {
         component={Register}
         options={{ headerShown: false }}
       />
-
       <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
       />
-
-      <Stack.Screen
-        name="App"
-        options={{ headerShown: false }}
-        component={AppNavigation}
-      />
     </Stack.Navigator>
   );
 }
+
+// export function AppNavigation() {
+//   const Tab = createBottomTabNavigator();
+//   const Stack = createNativeStackNavigator();
+
+
+//   return (
+
+//     <Tab.Navigator
+//       screenOptions={({ route }) => ({
+//         tabBarIcon: ({ focused, color, size }) => {
+//           let iconName;
+//           if (route.name === 'Home') {
+//             iconName = focused ? 'home' : 'home-outline';
+//           } else if (route.name === 'Settings') {
+//             iconName = focused ? 'settings' : 'settings-outline';
+//           }
+//           return <Ionicons name={iconName} size={size} color={color} />;
+//         },
+//         tabBarActiveTintColor: 'blue',
+//         tabBarInactiveTintColor: 'gray',
+//         tabBarLabelStyle: { paddingBottom: 10, fontSize: 10 },
+//         tabBarStyle: { padding: 10, height: 70 },
+//       })}
+//     >
+//       <Tab.Screen name="Home" component={Home} />
+
+//       {/* Placeholder for Settings screen. Implement Settings component similarly to Home */}
+//       <Tab.Screen name="Settings"component={() => null} ></Tab.Screen> 
+//     </Tab.Navigator>
+
+    
+//   );
+// }
 
 export function AppNavigation() {
   const Stack = createNativeStackNavigator();
